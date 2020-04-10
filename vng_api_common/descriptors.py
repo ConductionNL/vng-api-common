@@ -83,7 +83,8 @@ class GegevensGroepType:
 
         # map the values
         for key, field in self.mapping.items():
-            setattr(obj, field.name, value[key])
+            if key in value:
+                setattr(obj, field.name, value[key])
 
             if key not in self.optional:
                 attr_value = getattr(obj, field.name, None)
